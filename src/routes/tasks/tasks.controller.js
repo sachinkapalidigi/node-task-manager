@@ -23,16 +23,6 @@ const httpGetAllTasks = (req, res) => {
   });
 };
 
-const httpGetTasksByPriority = (req, res) => {
-  const { level } = req.params;
-  const tasks = new APIFeatures(getTasks(), { priority: level })
-    .filter()
-    .sort().collection;
-  return res.status(200).json({
-    tasks,
-  });
-};
-
 const httpCreateTask = (req, res) => {
   const { title, description, isComplete, priority } = req.body;
   const task = addTask(title, description, isComplete, priority);
