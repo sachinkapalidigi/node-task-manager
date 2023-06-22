@@ -1,0 +1,24 @@
+const express = require("express");
+const { createTasksSchema } = require("./tasks.validation.schema");
+const requestValidator = require("../../middlewares/requestValidator");
+const {
+  httpCreateTask,
+  httpDeleteTask,
+  httpGetAllTasks,
+  httpGetTask,
+  httpUpdateTask,
+} = require("./tasks.controller");
+
+const tasksRouter = express.Router();
+
+tasksRouter
+  .route("/")
+  .get(httpGetAllTasks)
+  .post(requestValidator(createTasksSchema), httpCreateTask);
+tasksRouter
+  .route("/:id")
+  .get(httpGetTask)
+  .put(requestValidator(createTasksSchema), httpUpdateTask)
+  .delete(httpDeleteTask);
+
+module.exports = tasksRouter;
