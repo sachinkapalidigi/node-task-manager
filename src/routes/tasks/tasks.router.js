@@ -7,6 +7,7 @@ const {
   httpGetAllTasks,
   httpGetTask,
   httpUpdateTask,
+  httpGetTasksByPriority,
 } = require("./tasks.controller");
 
 const tasksRouter = express.Router();
@@ -15,6 +16,9 @@ tasksRouter
   .route("/")
   .get(httpGetAllTasks)
   .post(requestValidator(createTasksSchema), httpCreateTask);
+
+tasksRouter.get("/priority/:level", httpGetAllTasks);
+
 tasksRouter
   .route("/:id")
   .get(httpGetTask)

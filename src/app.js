@@ -2,7 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const apiV1 = require("./api.v1");
+const apiV1 = require("./routes/api.v1");
+
+const app = express();
 
 // Add CORS and security related middlewares
 app.use(cors());
@@ -10,4 +12,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/v1", apiV1);
 
-export default app;
+module.exports = app;
