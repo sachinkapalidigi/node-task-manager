@@ -7,7 +7,6 @@ const {
   httpGetAllTasks,
   httpGetTask,
   httpUpdateTask,
-  httpGetTasksByPriority,
 } = require("./tasks.controller");
 
 const tasksRouter = express.Router();
